@@ -86,7 +86,13 @@ export default function Dashboard(){
           pb="4"
         >
           <Text fontSize="lg" mb="4">Inscritos da semana</Text>
-          <Chart type="area" height={160} series={series} options={options as any} /> 
+          <Chart 
+          type="area" 
+          height={160}
+          width="100%"   
+          series={series} 
+          options={options as any} 
+          /> 
         </Box>
         <Box
           p={["6", "8"]}
@@ -94,7 +100,13 @@ export default function Dashboard(){
           borderRadius={8}
         >
           <Text fontSize="lg" mb="4">Taxa de abertura</Text>
-          <Chart type="area" height={160} series={series} options={options as any} />
+          <Chart 
+          type="area" 
+          height={160}
+          width="100%"  
+          series={series} 
+          options={options as any} 
+          />
         </Box>
       </SimpleGrid>
 

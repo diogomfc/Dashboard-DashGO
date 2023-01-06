@@ -1,11 +1,17 @@
 import React from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex, useBreakpointValue } from '@chakra-ui/react';
 import Profile from './Profile';
 import Logo from './Logo';
 import SearchBox from './SearchBox';
 import NotificationsNav from './NotificationsNav';
 
 export default function Header(){
+  
+  const isLgVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  })
+  
   return(
     <Flex
       as="header"
@@ -19,14 +25,15 @@ export default function Header(){
     >  
        
        <Logo />
-       <SearchBox />
+        
+      {isLgVersion && <SearchBox />}
        
        <Flex
         align="center"
         ml="auto"
        > 
         <NotificationsNav />
-        <Profile />
+        <Profile  showProfileData={isLgVersion} />
       </Flex>
       
     </Flex>

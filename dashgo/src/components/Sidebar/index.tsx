@@ -3,7 +3,7 @@ import { Box, Drawer, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOver
 import SidebarNav from './SidebarNav';
 import { useSidebarDrawer } from "../../contexts/SidebarDrawerContext";
 
-export default function Sidebar(){
+export function Sidebar(){
 
   const { isOpen, onClose } = useSidebarDrawer();
   

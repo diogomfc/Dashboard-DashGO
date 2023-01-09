@@ -3,9 +3,20 @@ import { api } from '../api';
 import { User } from '../mirage';
 
 
-export async function getUser(){
+type GetUserResponse = {
+  users: User[];
+  totalCount: number;
+}
+
+export async function getUser(page: number): Promise<GetUserResponse> {
  
-    const {data} = await api.get('users')
+    const {data, headers} = await api.get('users',{
+      params: {
+        page,
+    }
+    })
+
+    const totalCount = Number(headers['x-total-count']);
   
     const users = data.users.map((
       user: User
@@ -22,15 +33,15 @@ export async function getUser(){
       }
     });
 
-    return users;
+    return {users, totalCount};
 
 }
 
 
-export function useUsers(){
-  return useQuery('users', getUser,
+export function useUsers(page: number){
+  return useQuery(['users',page], () => getUser(page),
   {
-    staleTime: 1000 * 5 // 5 seconds
+    staleTime: 1000 * 60 * 10, // 10 minutes
   });
 
 }

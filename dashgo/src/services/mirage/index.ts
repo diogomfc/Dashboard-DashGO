@@ -1,7 +1,7 @@
 import {createServer, Factory, Model} from 'miragejs';
 import { faker } from '@faker-js/faker';
 
-type User = {
+export type User = {
   id: number;
   name: string;
   email: string;
@@ -32,7 +32,7 @@ export function makeServer() {
       },
 
       seeds(server) {
-        server.createList('user', 200);
+        server.createList('user', 100);
       },
 
       routes() {

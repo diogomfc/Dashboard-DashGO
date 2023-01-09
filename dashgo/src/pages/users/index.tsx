@@ -30,7 +30,9 @@ import { useUsers } from '../../services/hooks/useUsers';
 
 import { User } from "../../services/mirage";
 import { queryClient } from "../../services/queryClient";
+import { GetServerSideProps } from "next";
 
+import {getUser} from "../../services/hooks/useUsers";
 
 export default function UserList(){
   
@@ -177,4 +179,15 @@ export default function UserList(){
       </Flex>
     </Box>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const {users, totalCount} = await getUser(1)
+
+  return {
+    props: {
+      users,
+      totalCount
+    }
+  }
 }

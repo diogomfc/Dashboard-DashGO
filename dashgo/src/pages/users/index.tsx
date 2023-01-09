@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { 
   Box, 
   Flex, 
@@ -31,6 +31,12 @@ export default function UserList(){
     lg: true,
   })
 
+  useEffect(() => {
+    fetch('http://localhost:3000/api/users')
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }, [])
+
   return(
     <Box>
       <Header />
@@ -60,7 +66,7 @@ export default function UserList(){
 
             <Link href="/users/create" passHref>
               <Button
-                as="a"
+                //as="a"
                 size="sm"
                 fontSize="sm"
                 colorScheme="pink"

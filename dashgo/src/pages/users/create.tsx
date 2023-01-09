@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Divider, Flex, Heading, SimpleGrid, VStack, Input, HStack, Button } from '@chakra-ui/react';
+import { Box, Divider, Flex, Heading, SimpleGrid, VStack, Text, HStack, Button } from '@chakra-ui/react';
 import Link from "next/link";
 
 import {SubmitHandler, useForm} from 'react-hook-form'
@@ -112,7 +112,7 @@ export default function CreateUser(){
                 label="Confirmação da senha"
                 {...register('password_confirmation')}
               />
-              {errors?.password_confirmation && <div style={{color: 'red', fontSize:'14px'}}>Senha não confere</div>}
+              {errors?.password_confirmation && <Text style={{color: 'red', fontSize:'14px'}}>Senha não confere</Text>}
               </Box>
            
             </SimpleGrid>
@@ -125,7 +125,10 @@ export default function CreateUser(){
           >
              <HStack spacing="4">
                 <Link href="/users" passHref>
-                  <Button as="a" colorScheme="whiteAlpha">Cancelar</Button>
+                  <Button 
+                  //as="a" 
+                  colorScheme="whiteAlpha"
+                  >Cancelar</Button>
                 </Link>
                <Button
                 colorScheme="pink"

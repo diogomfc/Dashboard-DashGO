@@ -60,16 +60,20 @@ export default function SignIn() {
               label='E-mail'
               //error={errors.email}
               {...register('email')}
+              _placeholder={{ color: 'yellow.300', fontSize: '14px' }}
+              placeholder={errors?.email ? '⚠️  informe um e-mail válido' : ''}
+              error={errors?.email && {type: 'error', message: 'Email inválido'}}
             /> 
-             {errors?.email && <p style={{color: 'red'}}>E-mail obrigatório</p>}
             <Input
             //error={errors.password}
             //name='password'
             type='password'
             label='Senha'
-            {...register('password')} 
+            {...register('password')}
+            _placeholder={{ color: 'yellow.300', fontSize: '14px' }}
+                placeholder={errors?.password ? '⚠️  Password obrigatória' : ''}
+                error={errors?.password && {type: 'error', message: 'Senha obrigatória'}}
             />
-            {errors?.password && <p style={{color: 'red'}}>Senha obrigatória</p>}
           </Stack>
 
           <Button 
